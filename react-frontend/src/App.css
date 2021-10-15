@@ -13,3 +13,11 @@
   max-width: 300px;
   margin: auto;
 }
+
+/* .current {
+  background-color: #FFFFFF;
+} */
+
+body {
+  background-image: url("https://www.transparenttextures.com/patterns/cream-pixels.png");
+}

@@ -10,7 +10,7 @@ import TodosList from "./components/todos-list.component";
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="main">
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/todos"} className="navbar-brand">
             Kyle's

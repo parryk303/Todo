@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TodoDataService from "../services/todo.service";
 
-export default class Tutorial extends Component {
+export default class Todo extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -120,7 +120,7 @@ export default class Tutorial extends Component {
       <div>
         {currentTodo ? (
           <div className="edit-form">
-            <h4>Tutorial</h4>
+            <h4>Todo</h4>
             <form>
               <div className="form-group">
                 <label htmlFor="title">Title</label>
@@ -147,7 +147,7 @@ export default class Tutorial extends Component {
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentTodo.completed ? "completed" : "Pending"}
+                {currentTodo.completed ? " Completed" : " Pending"}
               </div>
             </form>
 
@@ -185,8 +185,6 @@ export default class Tutorial extends Component {
           </div>
         ) : (
           <div>
-            <br />
-            <p>Please click on a Todo...</p>
           </div>
         )}
       </div>
