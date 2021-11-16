@@ -1,8 +1,8 @@
-import http from "../http-common";
+import http from '../http-common';
 
 class TodoDataService {
   getAll() {
-    return http.get("/todos");
+    return http.get('/todos');
   }
 
   get(id) {
@@ -10,7 +10,7 @@ class TodoDataService {
   }
 
   create(data) {
-    return http.post("/todos", data);
+    return http.post('/todos', data);
   }
 
   update(id, data) {

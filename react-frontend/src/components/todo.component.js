@@ -56,11 +56,7 @@ export default class Todo extends Component {
         this.setState({
           currentTodo: response.data
         });
-        console.log(response.data);
       })
-      .catch(e => {
-        console.log(e);
-      });
   }
 
   updateCompleted(status) {
@@ -79,11 +75,7 @@ export default class Todo extends Component {
             completed: status
           }
         }));
-        console.log(response.data);
       })
-      .catch(e => {
-        console.log(e);
-      });
   }
 
   updateTodo() {
@@ -91,26 +83,18 @@ export default class Todo extends Component {
       this.state.currentTodo.id,
       this.state.currentTodo
     )
-      .then(response => {
-        console.log(response.data);
+      .then(
         this.setState({
           message: `${this.state.currentTodo.title} was updated successfully!`
-        });
-      })
-      .catch(e => {
-        console.log(e);
-      });
+        })
+      )
   }
 
   deleteTodo() {
     TodoDataService.delete(this.state.currentTodo.id)
-      .then(response => {
-        console.log(response.data);
+      .then(
         this.props.history.push('/todos')
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      )
   }
 
   render() {

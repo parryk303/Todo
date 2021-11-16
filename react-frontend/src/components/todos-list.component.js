@@ -138,7 +138,7 @@ export default class TodosList extends Component {
                       onClick={() => this.toggleCompleted(index, todos, todo)} > 
                       {todo.completed ? '✅' : '❌'}
                       </span>
-                    {`   :   ${todo.title}`}
+                    {` : ${todo.title}`}
                   </li>
                 ))}
             </ul>

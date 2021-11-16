@@ -47,11 +47,7 @@ export default class AddTodo extends Component {
 
           submitted: true
         });
-        console.log(response.data);
       })
-      .catch(e => {
-        console.log(e);
-      });
   }
 
   newTodo() {
