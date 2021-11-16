@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import TodoDataService from "../services/todo.service";
+import React, { Component } from 'react';
+import TodoDataService from '../services/todo.service';
 
 export default class AddTodo extends Component {
   constructor(props) {
@@ -11,8 +11,8 @@ export default class AddTodo extends Component {
 
     this.state = {
       id: null,
-      title: "",
-      description: "", 
+      title: '',
+      description: '', 
       completed: false,
 
       submitted: false
@@ -57,8 +57,8 @@ export default class AddTodo extends Component {
   newTodo() {
     this.setState({
       id: null,
-      title: "",
-      description: "",
+      title: '',
+      description: '',
       completed: false,
 
       submitted: false
@@ -67,43 +67,39 @@ export default class AddTodo extends Component {
 
   render() {
     return (
-      <div className="submit-form">
+      <div className='submit-form'>
         {this.state.submitted ? (
           <div>
-            <h4>You submitted successfully!</h4>
-            <button className="btn btn-success" onClick={this.newTodo}>
-              Add
+            <h4>Todo successfully added!</h4>
+            <button className='btn btn-success' onClick={this.newTodo}>
+              Add Another
             </button>
           </div>
         ) : (
           <div>
-            <div className="form-group">
-              <label htmlFor="title">Title</label>
+            <div className='form-group'>
+              <label htmlFor='title'>Title</label>
               <input
-                type="text"
-                className="form-control"
-                id="title"
+                type='text'
+                className='form-control'
+                id='title'
                 required
                 value={this.state.title}
                 onChange={this.onChangeTitle}
-                name="title"
-              />
+                name='title' />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
+            <div className='form-group'>
+              <label htmlFor='description'>Description</label>
               <input
-                type="text"
-                className="form-control"
-                id="description"
+                type='text'
+                className='form-control'
+                id='description'
                 required
                 value={this.state.description}
                 onChange={this.onChangeDescription}
-                name="description"
-              />
+                name='description' />
             </div>
-
-            <button onClick={this.saveTodo} className="btn btn-success">
+            <button onClick={this.saveTodo} className='btn btn-success'>
               Submit
             </button>
           </div>

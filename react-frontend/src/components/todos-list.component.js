@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import TodoDataService from "../services/todo.service";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import TodoDataService from '../services/todo.service';
+import { Link } from 'react-router-dom';
 
 export default class TodosList extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class TodosList extends Component {
       todos: [],
       currentTodo: null,
       currentIndex: -1,
-      searchTitle: ""
+      searchTitle: ''
     };
   }
 
@@ -90,9 +90,8 @@ export default class TodosList extends Component {
       });
   }
 
-  toggleCompleted(index, todos, todo) {
-    todo.completed = !todo.completed
-    todos[index] = todo
+  toggleCompleted(index, todos, todo) { 
+    todos[index].completed = !todo.completed
     this.setState({
       todos: todos,
     });
@@ -100,91 +99,93 @@ export default class TodosList extends Component {
 
   render() {
     const { searchTitle, todos, currentTodo, currentIndex } = this.state;
-
     return (
-      <div className="list row">
-        <div className="col-md-8">
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search by title"
-              value={searchTitle}
-              onChange={this.onChangeSearchTitle}
-            />
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                onClick={this.searchTitle}
-              >
-                Search
-              </button>
+      <div>
+        {todos ? (
+          <div className='list row'>
+          <div className='col-md-8'>
+            <div className='input-group mb-3'>
+              <input
+                type='text'
+                className='form-control'
+                placeholder='Search by title'
+                value={searchTitle}
+                onChange={this.onChangeSearchTitle} />
+              <div className='input-group-append'>
+                <button
+                  id='search'
+                  className='btn btn-outline-secondary'
+                  type='button'
+                  onClick={this.searchTitle} >
+                  Search
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-6">
-          <h4>Todo List</h4>
-
-          <ul className="list-group">
-            {todos &&
-              todos.map((todo, index) => (
-                <li
-                  className={
-                    "list-group-item " +
-                    (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => this.setActiveTodo(todo, index)}
-                  key={index}
-                >
-                  <input 
-                  onClick={() => this.toggleCompleted(index, todos, todo)}
-                  type="checkbox" id={todo.id} name={todo.title} />
-                  {' ' + todo.title}
-                </li>
-              ))}
-          </ul>
-
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllTodos}
-          >
-            Clear List
-          </button>
-        </div>
-        <br />
-        <div className="col-md-6">
-          {currentTodo ? (
-            <div>
-              <h4>{currentTodo.title}</h4>
-              <div className="list-group-item">
-                {currentTodo.description && (
+          <div className='col-md-6'>
+            <ul className='list-group'>
+              {todos &&
+                todos.map((todo, index) => (
+                  <li
+                    className={
+                      'list-group-item ' +
+                      (index === currentIndex ? 'active' : '')
+                    }
+                    onClick={() => this.setActiveTodo(todo, index)}
+                    key={index} >
+                    <span
+                      className='checkbox' 
+                      onClick={() => this.toggleCompleted(index, todos, todo)} > 
+                      {todo.completed ? '✅' : '❌'}
+                      </span>
+                    {`   :   ${todo.title}`}
+                  </li>
+                ))}
+            </ul>
+            <button
+              id='clear'
+              className='m-3 btn btn-sm btn-danger'
+              onClick={this.removeAllTodos} >
+              Clear List
+            </button>
+          </div>
+          <br />
+          <div className='col-md-6'>
+            {currentTodo ? (
+              <div>
+                <h4>{currentTodo.title}</h4>
+                <div className='list-group-item'>
+                  {currentTodo.description && (
+                    <div>
+                      <label>
+                        <strong>Description:</strong>
+                      </label>{' '}
+                      {currentTodo.description}
+                    </div>
+                  )}
                   <div>
                     <label>
-                      <strong>Description:</strong>
-                    </label>{" "}
-                    {currentTodo.description}
+                      <strong>Status:</strong>
+                    </label>{' '}
+                    {currentTodo.completed ? 'Completed' : 'Pending'}
                   </div>
-                )}
-                <div>
-                  <label>
-                    <strong>Status:</strong>
-                  </label>{" "}
-                  {currentTodo.completed ? "Completed" : "Pending"}
                 </div>
+                <Link
+                  id='edit'
+                  to={'/todos/' + currentTodo.id}
+                  className='badge badge-warning' >
+                  Edit
+                </Link>
               </div>
-              <Link
-                to={"/todos/" + currentTodo.id}
-                className="badge badge-warning"
-              >
-                Edit
-              </Link>
-            </div>
-          ) : (
-            <div>
-            </div>
-          )}
+            ) : (
+              <div>
+              </div>
+            )}
+          </div>
         </div>
+        ) : (
+          <h1>Click 'Add' above, create a todo <br /><br /> to get started with your todo list!</h1>
+        )}
       </div>
     );
   }

@@ -1,7 +1,42 @@
+nav {
+  width: 103%;
+  margin-left: -1%;
+  font-family: 'Cinzel', serif;
+  border-radius: 6px;
+  box-shadow: 0 10px 8px -6px black;
+  background-color: #343A40;
+  background-image: url('https://www.transparenttextures.com/patterns/micro-carbon.png');
+}
+
+.navbar-brand {
+  margin-left: 1%;
+}
+
+h1 {
+  white-space: nowrap;
+  font-size: 95%;
+}
+
+h4 {
+  font-family: 'Cinzel', serif;
+  padding: 5%;
+  text-align: center;
+  background-color: #343A40;
+  color: white;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
 .list {
   text-align: left;
   max-width: 750px;
   margin: auto;
+}
+
+.list-group-item {
+  margin: 1%;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .submit-form {
@@ -14,10 +49,43 @@
   margin: auto;
 }
 
-/* .current {
-  background-color: #FFFFFF;
+button {
+  font-family: 'Cinzel', serif;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;}
+
+/* .checkbox {
+  border: solid;
+  border-color: black;
+  height: 25px;
+  width: 25px;
 } */
 
+#container {
+  width: fit-content;
+  padding: 5%;
+  margin-top: 2%;
+  border-radius: 6px;
+  background-color: #f2f2f2;
+  background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#search {
+  font-family: 'Cinzel', serif;
+  background-color: lightgrey;
+}
+
+#edit {
+  font-family: 'Cinzel', serif;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#edits {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 2%;
+}
+
 body {
+  font-family: 'Biryani', sans-serif;
   background-image: url("https://www.transparenttextures.com/patterns/cream-pixels.png");
 }

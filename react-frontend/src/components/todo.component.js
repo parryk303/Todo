@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import TodoDataService from "../services/todo.service";
+import React, { Component } from 'react';
+import TodoDataService from '../services/todo.service';
 
 export default class Todo extends Component {
   constructor(props) {
@@ -14,11 +14,11 @@ export default class Todo extends Component {
     this.state = {
       currentTodo: {
         id: null,
-        title: "",
-        description: "",
+        title: '',
+        description: '',
         completed: false
       },
-      message: ""
+      message: ''
     };
   }
 
@@ -29,7 +29,7 @@ export default class Todo extends Component {
   onChangeTitle(e) {
     const title = e.target.value;
 
-    this.setState(function(prevState) {
+    this.setState(function (prevState) {
       return {
         currentTodo: {
           ...prevState.currentTodo,
@@ -41,7 +41,7 @@ export default class Todo extends Component {
 
   onChangeDescription(e) {
     const description = e.target.value;
-    
+
     this.setState(prevState => ({
       currentTodo: {
         ...prevState.currentTodo,
@@ -94,7 +94,7 @@ export default class Todo extends Component {
       .then(response => {
         console.log(response.data);
         this.setState({
-          message: "The todo was updated successfully!"
+          message: `${this.state.currentTodo.title} was updated successfully!`
         });
       })
       .catch(e => {
@@ -102,7 +102,7 @@ export default class Todo extends Component {
       });
   }
 
-  deleteTodo() {    
+  deleteTodo() {
     TodoDataService.delete(this.state.currentTodo.id)
       .then(response => {
         console.log(response.data);
@@ -115,70 +115,48 @@ export default class Todo extends Component {
 
   render() {
     const { currentTodo } = this.state;
-
     return (
       <div>
         {currentTodo ? (
-          <div className="edit-form">
-            <h4>Todo</h4>
+          <div className='edit-form'>
+            <h4>{currentTodo.title}</h4>
             <form>
-              <div className="form-group">
-                <label htmlFor="title">Title</label>
+              <div className='form-group'>
+                <label htmlFor='title'>Title</label>
                 <input
-                  type="text"
-                  className="form-control"
-                  id="title"
+                  type='text'
+                  className='form-control'
+                  id='title'
                   value={currentTodo.title}
-                  onChange={this.onChangeTitle}
-                />
+                  onChange={this.onChangeTitle} />
               </div>
-              <div className="form-group">
-                <label htmlFor="description">Description</label>
+              <div className='form-group'>
+                <label htmlFor='description'>Description</label>
                 <input
-                  type="text"
-                  className="form-control"
-                  id="description"
+                  type='text'
+                  className='form-control'
+                  id='description'
                   value={currentTodo.description}
-                  onChange={this.onChangeDescription}
-                />
+                  onChange={this.onChangeDescription} />
               </div>
-
-              <div className="form-group">
+              <div className='form-group'>
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentTodo.completed ? " Completed" : " Pending"}
+                {currentTodo.completed ? ' Completed' : ' Pending'}
               </div>
             </form>
-
-            {currentTodo.completed ? (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => this.updateCompleted(false)}
-              >
-                Undo
-              </button>
-            ) : (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => this.updateCompleted(true)}
-              >
-                Completed
-              </button>
-            )}
-
             <button
-              className="badge badge-danger mr-2"
-              onClick={this.deleteTodo}
-            >
+              id='edits'
+              className='badge badge-danger mr-2'
+              onClick={this.deleteTodo} >
               Delete
             </button>
-
             <button
-              type="submit"
-              className="badge badge-success"
-              onClick={this.updateTodo}
-            >
+              id='edits'
+              type='submit'
+              className='badge badge-success'
+              onClick={this.updateTodo} >
               Update
             </button>
             <p>{this.state.message}</p>
