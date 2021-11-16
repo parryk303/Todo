@@ -11,6 +11,7 @@ export default class TodosList extends Component {
     this.setActiveTodo = this.setActiveTodo.bind(this);
     this.removeAllTodos = this.removeAllTodos.bind(this);
     this.searchTitle = this.searchTitle.bind(this);
+    this.toggleCompleted = this.toggleCompleted.bind(this);
 
     this.state = {
       todos: [],
@@ -89,6 +90,14 @@ export default class TodosList extends Component {
       });
   }
 
+  toggleCompleted(index, todos, todo) {
+    todo.completed = !todo.completed
+    todos[index] = todo
+    this.setState({
+      todos: todos,
+    });
+  }
+
   render() {
     const { searchTitle, todos, currentTodo, currentIndex } = this.state;
 
@@ -128,7 +137,10 @@ export default class TodosList extends Component {
                   onClick={() => this.setActiveTodo(todo, index)}
                   key={index}
                 >
-                  {todo.title}
+                  <input 
+                  onClick={() => this.toggleCompleted(index, todos, todo)}
+                  type="checkbox" id={todo.id} name={todo.title} />
+                  {' ' + todo.title}
                 </li>
               ))}
           </ul>
@@ -137,29 +149,29 @@ export default class TodosList extends Component {
             className="m-3 btn btn-sm btn-danger"
             onClick={this.removeAllTodos}
           >
-            Remove All
+            Clear List
           </button>
         </div>
-        <br/>
+        <br />
         <div className="col-md-6">
           {currentTodo ? (
             <div>
               <h4>{currentTodo.title}</h4>
               <div className="list-group-item">
-              {currentTodo.description && (
+                {currentTodo.description && (
+                  <div>
+                    <label>
+                      <strong>Description:</strong>
+                    </label>{" "}
+                    {currentTodo.description}
+                  </div>
+                )}
                 <div>
-                <label>
-                  <strong>Description:</strong>
-                </label>{" "}
-                {currentTodo.description}
-              </div>
-              )}
-              <div>
-                <label>
-                  <strong>Status:</strong>
-                </label>{" "}
-                {currentTodo.completed ? "Completed" : "Pending"}
-              </div>
+                  <label>
+                    <strong>Status:</strong>
+                  </label>{" "}
+                  {currentTodo.completed ? "Completed" : "Pending"}
+                </div>
               </div>
               <Link
                 to={"/todos/" + currentTodo.id}
