@@ -14,7 +14,6 @@ export default class AddTodo extends Component {
       title: '',
       description: '', 
       completed: false,
-
       submitted: false
     };
   }
@@ -44,7 +43,6 @@ export default class AddTodo extends Component {
           title: response.data.title,
           description: response.data.description,
           completed: response.data.completed,
-
           submitted: true
         });
       })
@@ -56,7 +54,6 @@ export default class AddTodo extends Component {
       title: '',
       description: '',
       completed: false,
-
       submitted: false
     });
   }

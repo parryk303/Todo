@@ -7,7 +7,6 @@ export default class Todo extends Component {
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.getTodo = this.getTodo.bind(this);
-    this.updateCompleted = this.updateCompleted.bind(this);
     this.updateTodo = this.updateTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
 
@@ -28,7 +27,6 @@ export default class Todo extends Component {
 
   onChangeTitle(e) {
     const title = e.target.value;
-
     this.setState(function (prevState) {
       return {
         currentTodo: {
@@ -41,7 +39,6 @@ export default class Todo extends Component {
 
   onChangeDescription(e) {
     const description = e.target.value;
-
     this.setState(prevState => ({
       currentTodo: {
         ...prevState.currentTodo,
@@ -56,25 +53,6 @@ export default class Todo extends Component {
         this.setState({
           currentTodo: response.data
         });
-      })
-  }
-
-  updateCompleted(status) {
-    var data = {
-      id: this.state.currentTodo.id,
-      title: this.state.currentTodo.title,
-      description: this.state.currentTodo.description,
-      completed: status
-    };
-
-    TodoDataService.update(this.state.currentTodo.id, data)
-      .then(response => {
-        this.setState(prevState => ({
-          currentTodo: {
-            ...prevState.currentTodo,
-            completed: status
-          }
-        }));
       })
   }
 
